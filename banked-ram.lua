@@ -40,10 +40,10 @@ for bank_count, layout in pairs(ram_layouts) do
 		{ -8/16, -8/16, -8/16, 8/16, -7/16, 8/16 },
 		{ -7/16, -7/16, -7/16, 7/16, -6/16, 7/16 },
 
-		{ -8/16, -7/16, -1/16, -7/16, -6/16, 1/16 },
-		{  8/16, -7/16, -1/16,  7/16, -6/16, 1/16 },
-		{ -1/16, -7/16, -8/16,  1/16, -6/16, -7/16 },
-		{ -1/16, -7/16,  8/16,  1/16, -6/16,  7/16 },
+		{ -8/16, -7/16, -2/16, -7/16, -6/16, 2/16 },
+		{  8/16, -7/16, -2/16,  7/16, -6/16, 2/16 },
+		{ -2/16, -7/16, -8/16,  2/16, -6/16, -7/16 },
+		{ -2/16, -7/16,  8/16,  2/16, -6/16,  7/16 },
 	}
 	for i = 1, 4 do
 		local x = bank_positions[i]
@@ -62,18 +62,18 @@ for bank_count, layout in pairs(ram_layouts) do
 		description = string.format("Digiline %d-bank RAM module (%d rows)", bank_count, row_count),
 		drawtype = "nodebox",
 		tiles = {
-			string.format("digiline_memory_banked_ram_%d.png", bank_count),
+			string.format("digiline_memory_banked_ram_base.png^digiline_memory_banked_ram_%d.png", bank_count),
 			"digiline_memory_flat.png",
 			"digiline_memory_ram_bank.png^digiline_memory_banked_ram_side.png",
 			"digiline_memory_ram_bank.png^digiline_memory_banked_ram_side.png",
-			"digiline_memory_banked_ram_side2.png",
-			"digiline_memory_banked_ram_side2.png",
+			"digiline_memory_banked_ram_side2.png^digiline_memory_banked_ram_side.png",
+			"digiline_memory_banked_ram_side2.png^digiline_memory_banked_ram_side.png",
 		},
 		paramtype = "light",
 		groups = { dig_immediate = 2 },
 		selection_box = {
 			type = "fixed",
-			fixed = {{ -8/16, -8/16, -8/16, 8/16, 4/16, 8/16 }}
+			fixed = {{ -8/16, -8/16, -8/16, 8/16, 6/16, 8/16 }}
 		},
 		node_box = {
 			type = "fixed",

@@ -11,8 +11,8 @@ local ram_layouts = {
 	},
 	[4] = {
 		{x=3, y=4, w=4, h=2},
-		{x=3, y=4, w=4, h=2},
-		{x=9, y=10, w=4, h=2},
+		{x=3, y=10, w=4, h=2},
+		{x=9, y=4, w=4, h=2},
 		{x=9, y=10, w=4, h=2},
 	},
 	[8] = {
@@ -58,10 +58,10 @@ for chip_count, layout in pairs(ram_layouts) do
 		{ -8/16, -8/16, -8/16, 8/16, -7/16, 8/16 },
 		{ -7/16, -7/16, -7/16, 7/16, -6/16, 7/16 },
 
-		{ -8/16, -7/16, -1/16, -7/16, -6/16, 1/16 },
-		{  8/16, -7/16, -1/16,  7/16, -6/16, 1/16 },
-		{ -1/16, -7/16, -8/16,  1/16, -6/16, -7/16 },
-		{ -1/16, -7/16,  8/16,  1/16, -6/16,  7/16 },
+		{ -8/16, -7/16, -2/16, -7/16, -6/16, 2/16 },
+		{  8/16, -7/16, -2/16,  7/16, -6/16, 2/16 },
+		{ -2/16, -7/16, -8/16,  2/16, -6/16, -7/16 },
+		{ -2/16, -7/16,  8/16,  2/16, -6/16,  7/16 },
 	}
 	for _, chip in ipairs(layout) do
 		nodeboxes[#nodeboxes + 1] = {
@@ -77,7 +77,7 @@ for chip_count, layout in pairs(ram_layouts) do
 		description = string.format("Digiline %d-chip RAM module (%d rows)", chip_count, row_count),
 		drawtype = "nodebox",
 		tiles = {
-			string.format("digiline_memory_ram_%d.png", chip_count),
+			string.format("digiline_memory_ram_base.png^digiline_memory_ram_%d.png", chip_count),
 			"digiline_memory_flat.png",
 			"digiline_memory_ram_side.png",
 		},
