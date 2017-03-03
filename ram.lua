@@ -1,6 +1,6 @@
 -- © 2017 numberZero
 
-local chip_size = 16
+local chip_size = digiline_memory.RAM_CHIP_SIZE
 local ram_layouts = {
 	[1] = {
 		{x=6, y=7, w=4, h=2},
@@ -27,7 +27,7 @@ local ram_layouts = {
 	},
 }
 
-local function chip_reset(desc, pos)
+local function reset(desc, pos)
 	local meta = minetest.get_meta(pos)
 	meta:from_table({
 		inventory = {},
@@ -39,7 +39,7 @@ local function chip_reset(desc, pos)
 	})
 end
 
-local function chip_receive_fields(pos, formname, fields, sender)
+local function receive_fields(pos, formname, fields, sender)
 	if fields.channel then
 		local meta = minetest.get_meta(pos)
 		meta:set_string("channel", fields.channel)
@@ -52,7 +52,7 @@ for chip_count, layout in pairs(ram_layouts) do
 	local desc = {
 		label = string.format("RAM module (%d rows)", row_count),
 		size = row_count,
-		reset = chip_reset,
+		reset = reset,
 	}
 	local nodeboxes = {
 		{ -8/16, -8/16, -8/16, 8/16, -7/16, 8/16 },
@@ -96,8 +96,8 @@ for chip_count, layout in pairs(ram_layouts) do
 			effector = { action = digiline_memory.on_digiline_receive },
 		},
 		digiline_memory = desc,
-		on_construct = function(pos) chip_reset(desc, pos) end,
-		on_receive_fields = chip_receive_fields,
+		on_construct = function(pos) reset(desc, pos) end,
+		on_receive_fields = receive_fields,
 	})
 end
 

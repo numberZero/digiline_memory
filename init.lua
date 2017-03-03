@@ -7,6 +7,8 @@
 local MODPATH = minetest.get_modpath("digiline_memory")
 
 digiline_memory = {}
+digiline_memory.RAM_CHIP_SIZE = 16
 
 dofile(MODPATH.."/memory.lua")
 dofile(MODPATH.."/ram.lua")
+dofile(MODPATH.."/banked-ram.lua")
