@@ -47,6 +47,7 @@ function digiline_memory.on_digiline_receive(pos, node, channel, msg)
 				value = MSG_DATA_TOO_LONG
 			else
 				meta:set_string(addr, value)
+				meta:mark_as_private(addr)
 				value = nil -- don't send it back
 			end
 		else
