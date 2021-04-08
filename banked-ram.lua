@@ -69,6 +69,7 @@ for bank_count, layout in pairs(ram_layouts) do
 			"digiline_memory_banked_ram_side2.png^digiline_memory_banked_ram_side.png",
 			"digiline_memory_banked_ram_side2.png^digiline_memory_banked_ram_side.png",
 		},
+		use_texture_alpha = minetest.features.use_texture_alpha_string_modes and "opaque" or nil,
 		paramtype = "light",
 		groups = { dig_immediate = 2 },
 		selection_box = {
